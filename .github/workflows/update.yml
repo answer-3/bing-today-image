@@ -1,14 +1,14 @@
 name: update bing today image
 on:
   schedule:
-    - cron: '00 16 * * *'
+    - cron: '18 16 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
       - name: 检出代码
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
@@ -19,7 +19,7 @@ jobs:
           run_install: true
 
       - name: 设置 node 运行环境
-      - uses: actions/setup-node@v3
+        uses: actions/setup-node@v3
         with:
           # 选择要使用的 node 版本
           node-version: 18
