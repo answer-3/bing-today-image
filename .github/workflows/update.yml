@@ -1,7 +1,7 @@
 name: update bing today image
 on:
   schedule:
-    - cron: '18 16 * * *'
+    - cron: '00 17 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,22 +29,22 @@ jobs:
       - name: 安装依赖包
         run: pnpm install
 
-      - name: 运行主程序
-        run: pnpm index
+#      - name: 运行主程序
+#        run: pnpm index
 
-      - name: 提交变更到 git 本地仓库
-        run: |
-          git config --local user.email "answer-3@qq.com"
-          git config --local user.name "answer-3"
-          git pull
-          git add docs/*
-          git commit -m "update by github actions"
-
-      - name: 推送到 github 远程仓库
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.MY_TOKEN }}
-          branch: main
+#      - name: 提交变更到 git 本地仓库
+#        run: |
+#          git config --local user.email "answer-3@qq.com"
+#          git config --local user.name "answer-3"
+#          git pull
+#          git add docs/*
+#          git commit -m "update by github actions"
+#
+#      - name: 推送到 github 远程仓库
+#        uses: ad-m/github-push-action@master
+#        with:
+#          github_token: ${{ secrets.MY_TOKEN }}
+#          branch: main
 
           # 运行构建脚本
       - name: Build VuePress site
@@ -56,7 +56,7 @@ jobs:
         uses: crazy-max/ghaction-github-pages@v2
         with:
           # 部署到 gh-pages 分支
-          target_branch: gh-pages
+#          target_branch: gh-pages
           # 部署目录为 VuePress 的默认输出目录
           build_dir: docs/.vuepress/dist
         env:
